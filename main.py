@@ -26,8 +26,28 @@ def start(message):
 
     markup.row(send_panchang)
     markup.row(everyday_panchang)
-    bot.send_message(message.chat.id, default_messages["start"], reply_markup=markup)
 
+    bot.send_message(message.chat.id, default_messages["start"])
+    on_button(message, "Сеголнешний panchang", "Ежедневный panchang")
+
+
+def on_button(message, button1, button2):
+    markup = types.ReplyKeyboardMarkup()
+    send_panchang = types.KeyboardButton(button1)
+    everyday_panchang = types.KeyboardButton(button2)
+
+    markup.row(send_panchang)
+    markup.row(everyday_panchang)
+    bot.send_message(message.chat.id, "Чем помочь", reply_markup=markup)
+
+
+@bot.message_handler()
+def button_clic(message):
+    if message.text == "Сеголнешний panchang":
+        bot.send_message(message.chat.id, "конечно сейчас все будет")
+    elif message.text == "Ежедневный panchang":
+        bot.send_message(message.chat.id, "конечно Ежедневный")
+        on_button(message, "1234", "6788")
 
 
 
