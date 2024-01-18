@@ -1,5 +1,4 @@
-
-import  telebot
+import telebot
 from telebot import types
 from decouple import config
 
@@ -28,9 +27,6 @@ def start(message):
     markup.row(send_panchang)
     markup.row(everyday_panchang)
     bot.send_message(message.chat.id, default_messages["start"], reply_markup=markup)
-
-
-
 
 
 
