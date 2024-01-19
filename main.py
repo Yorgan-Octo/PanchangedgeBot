@@ -30,6 +30,7 @@ def button_clic(message):
         bot.send_message(message.chat.id, text="Шкода що ви відписалися", reply_markup=markup)
 
 
+
 @bot.callback_query_handler(func=lambda call:True)
 def callback_sity_button(call):
     if call.message:
