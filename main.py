@@ -5,49 +5,57 @@ from decouple import config
 telegram_bot_token = config("TELEGRAM_BOT_TOKEN")
 bot = telebot.TeleBot(telegram_bot_token)
 
-default_messages = {
-    "start": "Приветсвую я PanchangedgeBot и я могу присылать тебе Panchang. Просто выбери то нужно и я все зделаю!"
-}
-
-
+followed_users = []
+start_string = "Вітаю я PanchangedgeBot і я можу надіслати тобі Panchang."
 
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    #markup = types.InlineKeyboardMarkup(row_width=2)
-    #button_kiev = types.InlineKeyboardButton("Киев", callback_data="button_kiev")
-    #button_riga = types.InlineKeyboardButton("Рига", callback_data="button_riga")
-
-    #markup.add(button_kiev,button_riga)
-
-    markup = types.ReplyKeyboardMarkup()
-    send_panchang = types.KeyboardButton("Сеголнешний panchang")
-    everyday_panchang = types.KeyboardButton("Ежедневный panchang")
-
-    markup.row(send_panchang)
-    markup.row(everyday_panchang)
-
-    bot.send_message(message.chat.id, default_messages["start"])
-    on_button(message, "Сеголнешний panchang", "Ежедневный panchang")
-
-
-def on_button(message, button1, button2):
-    markup = types.ReplyKeyboardMarkup()
-    send_panchang = types.KeyboardButton(button1)
-    everyday_panchang = types.KeyboardButton(button2)
-
-    markup.row(send_panchang)
-    markup.row(everyday_panchang)
-    bot.send_message(message.chat.id, "Чем помочь", reply_markup=markup)
+    markup = init_start_button(message)
+    bot.send_message(message.chat.id, start_string, reply_markup=markup)
 
 
 @bot.message_handler()
 def button_clic(message):
-    if message.text == "Сеголнешний panchang":
-        bot.send_message(message.chat.id, "конечно сейчас все будет")
-    elif message.text == "Ежедневный panchang":
-        bot.send_message(message.chat.id, "конечно Ежедневный")
-        on_button(message, "1234", "6788")
+    if message.text == "Сьогоднішній panchang":
+        markup = init_sity_button()
+        bot.send_message(message.chat.id, "Выбери необходимый город", reply_markup=markup)
+    elif message.text == "Підписатися":
+        followed_users.append(message.chat.id)
+        markup = init_start_button(message)
+        bot.send_message(message.chat.id, text="Тепер ви підписсані на щоранкову росилку panchang", reply_markup=markup)
+    elif message.text == "Відписатися":
+        followed_users.remove(message.chat.id)
+        markup = init_start_button(message)
+        bot.send_message(message.chat.id, text="Шкода що ви відписалися", reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda call:True)
+def callback_sity_button(call):
+    if call.message:
+        if call.data == "button_kiev":
+            bot.send_message(call.message.chat.id, text="киев так киев")
+
+
+def init_start_button(message):
+    markup = types.ReplyKeyboardMarkup()
+    send_panchang = types.KeyboardButton("Сьогоднішній panchang")
+
+    if followed_users.__contains__(message.chat.id):
+        followed_button = types.KeyboardButton("Відписатися")
+    else:
+        followed_button = types.KeyboardButton("Підписатися")
+
+    markup.row(send_panchang, followed_button)
+    return markup
+
+def init_sity_button():
+    markup = types.InlineKeyboardMarkup(row_width=2)
+    button_kiev = types.InlineKeyboardButton("Киев", callback_data="button_kiev")
+    button_riga = types.InlineKeyboardButton("Львів", callback_data="button_lviv")
+    markup.add(button_kiev, button_riga)
+    return markup
+
 
 
 
