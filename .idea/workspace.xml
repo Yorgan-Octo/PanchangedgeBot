@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fff4936e-8041-415c-8f28-bda850d8e3d6" name="Changes" comment="Организация структуры и создания методов для показа кнопок" />
+    <list default="true" id="fff4936e-8041-415c-8f28-bda850d8e3d6" name="Changes" comment="Коректировка">
+      <change afterPath="$PROJECT_DIR$/data/cities.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/parsers/panchang_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,6 +57,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;proofread&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hazak\OneDrive\Рабочий стол\PanchangedgeBot\data" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="PanchangedgeBot" />
@@ -124,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705705613370</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Коректировка">
+      <option name="closed" value="true" />
+      <created>1705705881069</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1705705881069</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -132,6 +150,23 @@
     <MESSAGE value="Небольшой рефакторинг" />
     <MESSAGE value="Небольшой експеремент (удачный)" />
     <MESSAGE value="Организация структуры и создания методов для показа кнопок" />
-    <option name="LAST_COMMIT_MESSAGE" value="Организация структуры и создания методов для показа кнопок" />
+    <MESSAGE value="Коректировка" />
+    <option name="LAST_COMMIT_MESSAGE" value="Коректировка" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/parsers/panchang_parser.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/parsers/panchang_parser.py</url>
+          <line>36</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

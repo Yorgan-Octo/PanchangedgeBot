@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Киев",
+    "system_name": "button_kiev",
+    "geoname_id": "703448"
+  },
+  {
+    "name": "Львів",
+    "system_name": "button_lviv",
+    "geoname_id": "702550"
+  }
+]
